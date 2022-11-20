@@ -13,6 +13,11 @@ import (
 func main() {
 	var client http.Client
 
+	if len(os.Args) == 1 {
+		fmt.Println("Usage: rss2m3u [ urls ]")
+		os.Exit(2)
+	}
+
 	for _, rawURL := range os.Args[1:] {
 		u, err := url.Parse(rawURL)
 		if err != nil {
